@@ -13,11 +13,11 @@ Drawer DrawerSection(BuildContext context) {
           title: Row(
             children: [
               SizedBox(width: width * .06),
-              Icon(Icons.history, color: Colors.white),
+              Icon(Icons.history, color: Color(0xFFCCA52A)),
               SizedBox(width: width * .06),
               Text(
                 'History',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Color(0xFFCCA52A)),
               )
             ],
           ),
@@ -35,9 +35,9 @@ Drawer DrawerSection(BuildContext context) {
                   height: 20,
                   child: Image(image: AssetImage('assets/img_2.png'))),
               SizedBox(width: width * .06),
-              Text('Dark Mode', style: TextStyle(color: Colors.white)),
+              Text('Dark Mode', style: TextStyle(color:Color(0xFFCCA52A))),
               SizedBox(width: width * .15),
-              Switch(
+              Switch(activeColor: Color(0xFFCCA52A),
                 value: isDarkMode,
                 onChanged: (value) {
                   // setState(() {

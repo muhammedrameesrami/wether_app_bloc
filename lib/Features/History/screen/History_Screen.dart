@@ -43,7 +43,7 @@ class _HistoryState extends State<History> {
           },
           child: Icon(
             Icons.arrow_back,
-            color: appBarColor,
+            color: Color(0xFFCCA52A),
             size: MediaQuery.of(context).size.width * 0.07,
           ),
         ),
@@ -51,7 +51,7 @@ class _HistoryState extends State<History> {
         title: Text(
           'History',
           style: GoogleFonts.poppins(
-            color: appBarColor,
+            color: Color(0xFFCCA52A),
             fontSize: MediaQuery.of(context).size.width * 0.05,
             fontWeight: FontWeight.w700,
           ),
@@ -74,7 +74,7 @@ class _HistoryState extends State<History> {
             child: Container(
               decoration: BoxDecoration(
                 color: isDarkMode == false
-                    ? Color.fromRGBO(176, 188, 200, 1.0)
+                    ? Color(0xFF18804C)
                     : Color.fromRGBO(30, 31, 33, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -89,7 +89,7 @@ class _HistoryState extends State<History> {
                     dateTimeString,
                     style: TextStyle(
                       color: isDarkMode == false
-                          ? Color.fromRGBO(36, 91, 130, 1.0)
+                          ? Color(0xFFCCA52A)
                           : Colors.white,
                       fontWeight: FontWeight.normal,
                       fontSize: MediaQuery.of(context).size.width * .03,
@@ -102,7 +102,7 @@ class _HistoryState extends State<History> {
                         locationName,
                         style: TextStyle(
                           color: isDarkMode == false
-                              ? Color.fromRGBO(36, 91, 130, 1.0)
+                              ? Color(0xFFCCA52A)
                               : Colors.white,
                           fontWeight: FontWeight.normal,
                           fontSize: MediaQuery.of(context).size.width * .03,
@@ -118,7 +118,7 @@ class _HistoryState extends State<History> {
                         wether,
                         style: TextStyle(
                           color: isDarkMode == false
-                              ? Color.fromRGBO(36, 91, 130, 1.0)
+                              ? Color(0xFFCCA52A)
                               : Colors.white,
                           fontWeight: FontWeight.normal,
                           fontSize: MediaQuery.of(context).size.width * .03,

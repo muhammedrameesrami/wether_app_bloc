@@ -1,10 +1,19 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';  // Add this import
 
 import '../../../Core/Common/Common.dart';
 
-Container bottomContainer() {
+
+
+
+Container bottomContainer({required Map<String, dynamic> weather}) {
+  String sunrise = formatTime(weather['sys']['sunrise'], weather['timezone']);
+  String sunset = formatTime(weather['sys']['sunset'], weather['timezone']);
+  int currentTime = DateTime.now().toUtc().millisecondsSinceEpoch ~/ 1000;
+
+  bool dayTime = isDayTime(currentTime, weather['sys']['sunrise'], weather['sys']['sunset']);
+
   return Container(
     width: width * .95,
     height: height * .082,
@@ -21,9 +30,9 @@ Container bottomContainer() {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(formattedDay,
-                  style: TextStyle(fontSize: width * .03,color: Color(0xFFCCA52A))),
+                  style: TextStyle(fontSize: width * .03, color: Color(0xFFCCA52A))),
               Text(formattedTime,
-                  style: TextStyle(fontSize: width * .04,color: Color(0xFFCCA52A))),
+                  style: TextStyle(fontSize: width * .04, color: Color(0xFFCCA52A))),
             ],
           ),
         ),
@@ -31,17 +40,19 @@ Container bottomContainer() {
         SizedBox(
             height: height * .03,
             width: width * .2,
-            child: Image(
-              color: isDarkMode == false
-                  ? Color(0xFFCCA52A)
-                  : Colors.white,
-              image: const AssetImage('assets/img_3.png'),
+            child: Icon(
+                 dayTime?CupertinoIcons.cloud_sun:CupertinoIcons.cloud_moon,color:Color(0xFFCCA52A) ,
             )),
         SizedBox(width: width * .1),
-        Text('26°',
-            style: TextStyle(fontSize: width * .07,color: Color(0xFFCCA52A))),
-        SizedBox(width: width * .15),
-        Text('26°', style: TextStyle(fontSize: width * .04,color: Color(0xFFCCA52A)))
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('Sunrise $sunrise',
+                style: TextStyle(fontSize: width * .03, color: Color(0xFFCCA52A))),
+            Text('Sunset $sunset',
+                style: TextStyle(fontSize: width * .03, color: Color(0xFFCCA52A))),
+          ],
+        ),
       ],
     ),
   );

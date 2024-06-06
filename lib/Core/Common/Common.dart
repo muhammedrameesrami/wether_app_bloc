@@ -13,6 +13,18 @@ double width = 0.0;
 String formattedTime = DateFormat.jm().format(DateTime.now());
 String formattedDay = DateFormat.E().format(DateTime.now()).substring(0, 3);
 
+/// wether data timeclculation
+
+String formatTime(int timestamp, int timezoneOffset) {
+ DateTime dateTime = DateTime.fromMillisecondsSinceEpoch((timestamp + timezoneOffset) * 1000, isUtc: true);
+ return DateFormat.jm().format(dateTime);
+}
+
+/// weather data time calculation is day or night
+bool isDayTime(int currentTime, int sunrise, int sunset) {
+ return currentTime >= sunrise && currentTime <= sunset;
+}
+
 ///App bar color
 var appBarColor = const Color(0xFFCCA52A);
 

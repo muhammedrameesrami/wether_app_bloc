@@ -89,10 +89,10 @@ class _HomeState extends State<Home> {
             child: TextFormField(
               controller: _searchController,
               decoration: InputDecoration(
-                labelText: 'Search Location',
+                labelText: 'Search Location',labelStyle: TextStyle(color: Color(0xFFCCA52A)),
                 border: OutlineInputBorder(),
                 suffixIcon: IconButton(
-                  icon: Icon(Icons.close),
+                  icon: Icon(Icons.close,color: Color(0xFFCCA52A),),
                   onPressed: () {
                     _searchController.clear();
                     currentLocation='';

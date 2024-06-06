@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wether_app_bloc/Features/Home/screen/weakly%20wether%20section.dart';
 import '../../../Core/Common/Common.dart';
 import 'Home_Screen.dart';
 import 'bottom_Containeer.dart';
@@ -53,14 +54,20 @@ SingleChildScrollView bodySection({required Map<String, dynamic> wetherData,requ
               padding: EdgeInsets.only(left: width * .2),
               child: Text(wetherData['main']['temp'].toString(),
                   style: GoogleFonts.abel(
-                      fontSize: width * .07,color:Colors.white,
+                      fontSize: width * .07,color:Color(0xFFCCA52A),
                       fontWeight: FontWeight.normal)),
             ),
             SizedBox(width: 20),
-            Icon(color: Colors.white,
-              Icons.cloud,
+           wetherData['weather'][0]['main']=='Clouds'&&wetherData['weather'][0]['main']=='Clear'? Icon(color: Color(0xFFCCA52A),
+              CupertinoIcons.cloud_sun,
               size: width * .2,
-            )
+            ):wetherData['weather'][0]['main']=='Rain'?Icon(color: Color(0xFFCCA52A),
+            CupertinoIcons.cloud_bolt_rain,
+             size: width * .2,
+           ):Icon(color: Color(0xFFCCA52A),
+            CupertinoIcons.cloud,
+             size: width * .2,
+           )
           ],
         ),
         Row(
@@ -143,266 +150,21 @@ SingleChildScrollView bodySection({required Map<String, dynamic> wetherData,requ
           height: height * .02,
         ),
         Text(
-          'Today',
+          'Weakly Weather',
           style: TextStyle(
               fontSize: width * .04, color: appBarColor),
         ),
         SizedBox(
           height: height * .02,
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(
-                width: width * .02,
-              ),
-              ///first row container
-              Container(
-                width: width * .45,
-                height: height * .22,
-                decoration: BoxDecoration(
-                    color: isDarkMode == false
-                        ? Color(0xFF037E40)
-                        : Color.fromRGBO(30, 31, 33, 1.0),
-                    borderRadius: BorderRadius.circular(35)),
-                child: Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('09:00 AM',
-                            style:
-                            TextStyle(fontSize: width * .03,color: Color(0xFFCCA52A))),
-                        SizedBox(height: height * .005),
-                        Row(
-                          children: [
-                            Text('temperature°',
-                                style: TextStyle(
-                                    fontSize: width * .03,color: Color(0xFFCCA52A))),
+        /// weakly weather section
+        WeaklyWeather(wetherData: wetherData,),
 
-                            Icon(color: Color(0xFFCCA52A),
-                              Icons.cloud,
-                              size: width * .06,
-                            )
-                          ],
-                        ),
-                        SizedBox(height: height * .01),
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                    height: height * .04,
-                                    width: width * .05,
-                                    child: Image(
-                                        color: isDarkMode == false
-                                            ? Color(0xFFCCA52A)
-                                            : Colors.white,
-                                        image: AssetImage(
-                                            'assets/img.png'))),
-                                Text('${wetherData['rainCahnce']}%',
-                                    style: TextStyle(
-                                        fontSize: width * .02,color: Color(0xFFCCA52A))),
-                              ],
-                            ),
-                            SizedBox(width: width * .1),
-                            Column(
-                              children: [
-                                SizedBox(
-                                    height: height * .04,
-                                    width: width * .05,
-                                    child: const Image(color: Color(0xFFCCA52A),
-                                        image: AssetImage(
-                                            'assets/img_1.png'))),
-                                Text('{windSpeed}Km /h',
-                                    style: TextStyle(
-                                        fontSize: width * .02,color: Color(0xFFCCA52A))),
-                              ],
-                            )
-                          ],
-                        ),
-                        SizedBox(height: height * .002),
-                        Text('climate',
-                            style:
-                            TextStyle(fontSize: width * .03,color: Color(0xFFCCA52A)))
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: width * .04,
-              ),
-              /// second row container
-              Container(
-                width: width * .45,
-                height: height * .22,
-                decoration: BoxDecoration(
-                    color: isDarkMode == false
-                        ? Color(0xFF037E40)
-                        : Color.fromRGBO(30, 31, 33, 1.0),
-                    borderRadius: BorderRadius.circular(35)),
-                child: Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('12:00 PM',
-                            style:
-                            TextStyle(fontSize: width * .05,color: Color(0xFFCCA52A))),
-                        SizedBox(height: height * .005),
-                        Row(
-                          children: [
-                            Text('temperature°',
-                                style: TextStyle(
-                                    fontSize: width * .06,color: Color(0xFFCCA52A))),
-                            SizedBox(width: width * .02),
-                            Icon(color: Color(0xFFCCA52A),
-                              Icons.cloud,
-                              size: width * .06,
-                            )
-                          ],
-                        ),
-                        SizedBox(height: height * .01),
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                    height: height * .04,
-                                    width: width * .05,
-                                    child: Image(
-                                        color: isDarkMode == false
-                                            ? Color(0xFFCCA52A)
-                                            : Colors.white,
-                                        image: AssetImage(
-                                            'assets/img.png'))),
-                                Text('{rainChance}%',
-                                    style: TextStyle(
-                                        fontSize: width * .02,color: Color(0xFFCCA52A))),
-                              ],
-                            ),
-                            SizedBox(width: width * .1),
-                            Column(
-                              children: [
-                                SizedBox(
-                                    height: height * .04,
-                                    width: width * .05,
-                                    child: const Image(color: Color(0xFFCCA52A),
-                                        image: AssetImage(
-                                            'assets/img_1.png'))),
-                                Text('{windSpeed}Km /h',
-                                    style: TextStyle(
-                                        fontSize: width * .02,color: Color(0xFFCCA52A))),
-                              ],
-                            )
-                          ],
-                        ),
-                        SizedBox(height: height * .002),
-                        Text('climate',
-                            style:
-                            TextStyle(fontSize: width * .03,color: Color(0xFFCCA52A)))
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: width * .04,
-              ),
-              /// third row container
-              Container(
-                width: width * .45,
-                height: height * .22,
-                decoration: BoxDecoration(
-                    color: isDarkMode == false
-                        ?Color(0xFF037E40)
-                        : Color.fromRGBO(30, 31, 33, 1.0),
-                    borderRadius: BorderRadius.circular(35)),
-                child: Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('03:00 PM',
-                            style:
-                            TextStyle(fontSize: width * .05,color: Color(0xFFCCA52A))),
-                        SizedBox(height: height * .005),
-                        Row(
-                          children: [
-                            Text('temperature°',
-                                style: TextStyle(
-                                    fontSize: width * .06,color: Color(0xFFCCA52A))),
-                            SizedBox(width: width * .02),
-                            Icon(color: Color(0xFFCCA52A),
-                              Icons.cloud,
-                              size: width * .06,
-                            )
-                          ],
-                        ),
-                        SizedBox(height: height * .01),
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                    height: height * .04,
-                                    width: width * .05,
-                                    child: Image(
-                                        color: isDarkMode == false
-                                            ? Color(0xFFCCA52A)
-                                            : Colors.white,
-                                        image: AssetImage(
-                                            'assets/img.png'))),
-                                Text('{rainChance}%',
-                                    style: TextStyle(
-                                        fontSize: width * .02,color: Color(0xFFCCA52A))),
-                              ],
-                            ),
-                            SizedBox(width: width * .1),
-                            Column(
-                              children: [
-                                SizedBox(
-                                    height: height * .04,
-                                    width: width * .05,
-                                    child: const Image(color: Color(0xFFCCA52A),
-                                        image: AssetImage(
-                                            'assets/img_1.png'))),
-                                Text('{windSpeed}Km /h',
-                                    style: TextStyle(
-                                        fontSize: width * .02,color: Color(0xFFCCA52A))),
-                              ],
-                            )
-                          ],
-                        ),
-                        SizedBox(height: height * .002),
-                        Text('climate',
-                            style:
-                            TextStyle(fontSize: width * .03,color: Color(0xFFCCA52A)))
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: width * .04,
-              ),
-            ],
-          ),
-        ),
         SizedBox(
           height: height * .03,
         ),
         Text(
-          '5 days forecast',
+          'Live Update',
           style: TextStyle(
               fontSize: width * .04, color: appBarColor),
         ),
@@ -410,8 +172,9 @@ SingleChildScrollView bodySection({required Map<String, dynamic> wetherData,requ
           height: height * .03,
         ),
         /// bottom section
-        bottomContainer()
+        bottomContainer(weather: wetherData)
       ],
     ),
   );
 }
+
